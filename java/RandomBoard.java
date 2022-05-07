@@ -44,6 +44,7 @@ public class RandomBoard extends Board {
         int column = (int) (Math.random() * columnBoundaries[1]);
         Position position = new Position(row, column);
         if (position.equals(start)) return generateRandomPosition();
+        if (position.equals(end)) return generateRandomPosition();
         return position;
     }
 
