@@ -1,5 +1,5 @@
 from random import randint
-from typing import List, Optional, Set, Tuple
+from typing import List, Set, Tuple
 from itertools import product
 
 from position import Position

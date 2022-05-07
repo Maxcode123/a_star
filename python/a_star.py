@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Optional
 
 from board import Board
 from position import Position
@@ -21,7 +21,6 @@ class AStarSearch:
     def find_path(
         self, start: Optional[Position] = None, goal: Optional[Position] = None
     ) -> Path:
-        """Returns the path as a list of positions."""
         if start is None:
             start = self.board.get_start()
         if goal is None:
