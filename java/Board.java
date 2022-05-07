@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Board {
@@ -60,7 +62,7 @@ public class Board {
 
     public int getCost(Position position) {
         for (Position b : barriers) {
-            if (position == b) {
+            if (position.equals(b)) {
                 return 100;
             }
         }
@@ -76,16 +78,16 @@ public class Board {
                 s.add(new int[]{steps[i], steps[j]});
             }
         }
-        Set<Position> available = new HashSet<Position>();
+        List<Position> available = new ArrayList<Position>();
         for (int[] d: s) {
             Position pos = Position.move(position, d[0], d[1]);
-            if (validPosition(position) & d[0] != 0 & d[1] != 0) {
+            if (validPosition(pos) & !(d[0] == 0 & d[1] == 0)) {
                 available.add(pos);
             }
         }
-        Position[] moves = new Position[available.size()];
-        available.toArray(moves);
-        return moves;
+        Position[] array = new Position[available.size()];
+        available.toArray(array);
+        return array;
     }
 
     private boolean validPosition(Position position) {
@@ -94,14 +96,14 @@ public class Board {
     }
 
     private boolean validRow(int row) {
-        if (this.rowBoundaries[0] < row & row < this.rowBoundaries[1]) {
+        if (this.rowBoundaries[0] <= row & row <= this.rowBoundaries[1]) {
             return true;
         }
         return false;
     }
 
     private boolean validColumn(int column) {
-        if (this.columnBoundaries[0] < column & column < this.columnBoundaries[1]) {
+        if (this.columnBoundaries[0] <= column & column <= this.columnBoundaries[1]) {
             return true;
         }
         return false;
