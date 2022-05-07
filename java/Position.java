@@ -21,4 +21,22 @@ public class Position {
         int[] diff = {dx, dy};
         return diff;
     }
+
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Position)) return false;
+        Position pos = (Position)o;
+        return pos.row == row && pos.column == column;
+    }
+
+    public int hashCode() {
+        int result = 17;
+        result = 37 * result + row;
+        result = 37 * result + column;
+        return result;
+    }
+
+    public String toString() {
+        return "(" + row + ", " + column + ")";
+    }
 }
