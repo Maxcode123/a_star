@@ -20,6 +20,7 @@ public class AStar {
     }
 
     private void initAttrs(Position start, Position goal) {
+        openSet = new HashSet<Position>();
         openSet.add(start);
         closedSet = new HashSet<Position>();
         cameFrom = new HashMap<Position, Position>();
@@ -34,7 +35,7 @@ public class AStar {
         while (openSet.size() > 0) {
             Position current = findMinFPosition();
 
-            if (current == goal) return reconstructPath(goal);
+            if (current.equals(goal)) return reconstructPath(goal);
             openSet.remove(current);
             closedSet.add(current);
 
