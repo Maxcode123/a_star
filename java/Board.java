@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Set;
 
 public class Board {
-    private int[] rowBoundaries;
-    private int[] columnBoundaries;
-    private Position[] barriers;
-    private Position start;
-    private Position end;
+    protected int[] rowBoundaries;
+    protected int[] columnBoundaries;
+    protected Position[] barriers;
+    protected Position start;
+    protected Position end;
 
     public Board() {
         this.rowBoundaries = new int[]{0, 7};
@@ -28,7 +28,7 @@ public class Board {
         return barriers;
     }
 
-    private void setStart() {
+    protected void setStart() {
         this.start = new Position(0, 0);
     }
 
@@ -36,7 +36,7 @@ public class Board {
         return this.start;
     }
 
-    private void setEnd() {
+    protected void setEnd() {
         this.end = new Position(this.rowBoundaries[1], this.columnBoundaries[1]);
     }
 
