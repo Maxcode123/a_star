@@ -30,6 +30,14 @@ public class AStar {
         fScore.put(start, this.heuristic.getDistance(start, goal));
     }
 
+    public List<Position> findPath() {
+        Position start = board.getStart();
+        Position end = board.getEnd();
+        List<Position> path;
+        path = findPath(start, end);
+        return path;
+    }
+
     public List<Position> findPath(Position start, Position goal) {
         initAttrs(start, goal);
         while (openSet.size() > 0) {

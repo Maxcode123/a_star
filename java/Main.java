@@ -6,9 +6,7 @@ public class Main {
         Heuristic heuristic = new Chebysev();
 
         AStar aStar = new AStar(board, heuristic);
-        Position start = new Position(0, 0);
-        Position goal = new Position(7, 7);
-        List<Position> path = aStar.findPath(start, goal);
+        List<Position> path = aStar.findPath();
         for (Position p: path) {
             System.out.println(p);
         }
