@@ -6,4 +6,4 @@ Find the path with the lowest cost between the upper left corner to the lower ri
 The board consists of a grid of squares.\
 Movement is allowed to any direction by one square.\
 The cost to move from one position to a neighbouring position is 1.\
-The cost to move from a position to a barrier 100.
+The cost to move from a position to a barrier is 100.
