@@ -1,6 +1,5 @@
 #include "position.h"
 #include <set>
-#include <vector>
 #include <list>
 using namespace std;
 
