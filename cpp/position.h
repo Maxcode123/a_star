@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+using namespace std;
 
 class Position {
     public:
@@ -14,6 +15,20 @@ class Position {
         column = c;
     }
     Position() :row{0}, column{0} {}
+    bool operator>(const Position& obj) const
+    {
+        double d1 = sqrt(row^2 + column^2);
+        double d2 = sqrt(obj.row^2 + obj.column^2);
+        bool res = d1 > d2;
+        return res;
+    }
+    bool operator<(const Position& obj) const
+    {
+        double d1 = sqrt(row^2 + column^2);
+        double d2 = sqrt(obj.row^2 + obj.column^2);
+        bool res = d1 < d2;
+        return res;
+    }
 };
 
 Position Position::move(Position position, int dx, int dy) {
