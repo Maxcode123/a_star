@@ -1,7 +1,6 @@
 #include "position.h"
 #include <set>
 #include <list>
-using namespace std;
 
 class Board 
 {

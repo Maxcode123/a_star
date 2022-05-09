@@ -59,10 +59,10 @@ void AStar::appoint_f_score(Position current, Position neighbour, Position goal)
 
 list<Position> AStar::reconstruct_path(Position position) {
     list<Position> positions;
-    positions.insert(position);
+    positions.push_back(position);
     while (has_key(came_from, position)) {
         position = came_from.at(position);
-        positions.insert(position);
+        positions.push_back(position);
     }
     return positions;
 }
@@ -70,6 +70,6 @@ list<Position> AStar::reconstruct_path(Position position) {
 bool AStar::has_key(map<Position, Position> m, Position position) {
     for (std::map<Position,Position>::iterator it = m.begin(); it != m.end(); it++) {
         if (position.equals(it->first)) return true;
-        return false;
     }
+    return false;
 }
