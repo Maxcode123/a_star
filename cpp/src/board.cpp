@@ -1,42 +1,7 @@
-#include "position.h"
 #include <set>
 #include <list>
-
-class Board 
-{
-public:
-    Board() // Constructor
-    {
-        int r[] = {0, 7};
-        row_boundaries = r;
-        int c[] = {0, 7};
-        column_boundaries = c;
-        create_barriers(barriers);
-        set_start();
-        set_end();
-    }
-    Position get_start();
-    Position get_end();
-    void set_row_boundaries(int *boundaries);
-    void set_column_boundaries(int *boundaries);
-    void set_barriers(Position *b);
-    Position* get_neighbours(Position position);
-    int get_cost(Position position);
-private:
-    int* row_boundaries;
-    int* column_boundaries;
-    Position* barriers;
-    int barriers_len;
-    Position start;
-    Position end;
-    void create_barriers(Position* b);
-    void set_start();
-    void set_end();
-    Position* available_moves(Position position, int distance);
-    bool valid_position(Position position);
-    bool valid_row(int row);
-    bool valid_column(int column);
-};
+#include "board.h"
+#include "position.h"
 
 void Board::set_row_boundaries(int *boundaries) {
     row_boundaries = boundaries;
@@ -91,7 +56,7 @@ int Board::get_cost(Position position) {
 
 Position* Board::available_moves(Position position, int distance) {
     int steps[] = {-distance, 0, distance};
-    set<int*> s;
+    std::set<int*> s;
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             if (steps[i] == 0 && steps[j] == 0) continue;
@@ -99,14 +64,14 @@ Position* Board::available_moves(Position position, int distance) {
             s.insert(d);
         }
     }
-    list<Position> available;
+    std::list<Position> available;
     for (int* d: s) {
         Position pos = Position::move(position, d[0], d[1]);
         if (valid_position(pos)) available.push_back(pos);
     }
     Position* array = (Position*)malloc(sizeof(Position) * available.size());
     int i = 0;
-    list<Position>::iterator it;
+    std::list<Position>::iterator it;
     for (it = available.begin(); it != available.end(); i++) {
         array[i] = *it;
         it++;

@@ -1,10 +1,6 @@
-#include "board.h"
-
-class Chebysev 
-{
-public:
-    static int get_distance(Position start, Position goal);
-};
+#include "position.h"
+#include "heuristics.h"
+#include <algorithm>
 
 int Chebysev::get_distance(Position start, Position goal) {
     int D = 1;
